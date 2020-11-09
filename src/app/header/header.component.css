@@ -1,0 +1,27 @@
+.Rectangle {
+    width: 100%;
+    height: 60px;
+    padding: 16px 963px 16px 106px;
+    background-color: #025fc1;
+}
+
+.Painel-TRIP---On-O {
+    width: 230px;
+    height: 28px;
+    margin: 0 0 0 17px;
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #ffffff;
+}
+.Painel-TRIP---On-O .text-style-1 {
+    font-weight: normal;
+}
+
+.Painel-TRIP---On-O .text-style-2 {
+    font-weight: 300;
+}
