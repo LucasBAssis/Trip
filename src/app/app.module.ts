@@ -1,3 +1,4 @@
+import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { TripOptimizerModule } from './trip-optimizer/trip-optimizer.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,7 +12,8 @@ import { TripOptimizerComponent } from './trip-optimizer/trip-optimizer.componen
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
