@@ -1,16 +1,89 @@
 <div>
-    <div>
-        <label for="latitude">Latitude:</label>
-        <input id="latitude" type="number" [(ngModel)]="latitude" placeholder="Latitude">
+  <div class="Filters">
+    <div class="filter-rectangle estacao">
+      <label for="estacao" class="label">Estação</label>
+      <select name="estacao" id="estacao" class="select">
+        <option>Todas</option>
+        <option>Estação 1</option>
+        <option>Estação 2</option>
+      </select>
     </div>
+    <div class="filter-rectangle trem">
+      <label for="trem" class="label">Trem</label>
+      <select name="trem" id="trem" class="select">
+        <option>Todos</option>
+        <option>Trem 1</option>
+        <option>Trem 2</option>
+      </select>
+    </div>
+    <div class="filter-rectangle locomotiva">
+      <label for="locomotiva" class="label">Locomotiva</label>
+      <select name="locomotiva" id="locomotiva" class="select">
+        <option>Todas</option>
+        <option>Locomotiva 1</option>
+        <option>Locomotiva 2</option>
+      </select>
+    </div>
+    <div class="filter-rectangle os">
+      <label for="os" class="label">OS</label>
+      <select name="os" id="os" class="select">
+        <option>Todas</option>
+        <option>OS 1</option>
+        <option>OS 2</option>
+      </select>
+    </div>
+    <button type="button" class="button"><span class="button-span">Buscar</span></button>
+  </div>
+
+  <div>
+    <span class="Indicadores">INDICADORES</span>
+  </div>
+
+  <div class="display-line">
+    <div class="card card-centro-oeste">
+      <span class="card-span">8</span>
+      <span class="card-location">Centro Oeste (CO)</span>
+    </div>
+    <div class="card card-sp-norte">
+      <span class="card-span">2</span>
+      <span class="card-location">SP Norte</span>
+    </div>
+    <div class="card card-sp-sul">
+      <span class="card-span">4</span>
+      <span class="card-location">SP Sul</span>
+    </div>
+  </div>
+
+  <div>
+    <span class="Detalhamento">DETALHAMENTO</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="display-line">
+    <span class="Exibir">Exibir:</span>
+    <input type="radio" id="todos" name="localizacao" value="todos" class="radio" checked>
+    <label for="todos" class="radio-text radio-text-todos">Todos</label>
+    <input type="radio" id="centroOeste" name="localizacao" value="centroOeste" class="radio">
+    <label for="centroOeste" class="radio-text radio-text-co">Centro Oeste</label>
+    <input type="radio" id="spNorte" name="localizacao" value="spNorte" class="radio">
+    <label for="spNorte" class="radio-text radio-text-spn">SP Norte</label>
+    <input type="radio" id="spSul" name="localizacao" value="spSul" class="radio">
+    <label for="spSul" class="radio-text radio-text-sps">SP Sul</label>
+  </div>
   
-    <div>
-        <label for="longitude">Longitude:</label>
-        <input id="longitude" type="number" [(ngModel)]="longitude" placeholder="Longitude">
-    </div>
-    <button (click)="setCenter()">Go</button>
+
+  <!-- <div>
+    <label for="latitude">Latitude:</label>
+    <input id="latitude" type="number" [(ngModel)]="latitude" placeholder="Latitude">
   </div>
-  <br>
-  <div class="col-6">
-    <div id="map" class="map Map-Rectangle"></div>
-  </div>
+
+  <div>
+    <label for="longitude">Longitude:</label>
+    <input id="longitude" type="number" [(ngModel)]="longitude" placeholder="Longitude">
+  </div> 
+  <button (click)="setCenter()">Go</button>-->
+</div>
+<br>
+<div class="col-6">
+  <div id="map" class="map Map-Rectangle"></div>
+</div>

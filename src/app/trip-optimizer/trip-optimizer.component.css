@@ -1,5 +1,253 @@
+.display-line {
+  display: flex;
+}
+
 .Map-Rectangle {
-    width: 1089px;
-    height: 508px;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.14);
-  }
+  width: 1089px;
+  height: 508px;
+  margin: 35px 147px 42px 105px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.14);
+}
+
+.Filters {
+  width: 100%;
+  height: 60px;
+  margin: 0 0 30px 0;
+  padding: 14px 105px 14px 105px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.38);
+  background-color: #fdfdfd;
+  display: flex;
+}
+
+.filter-rectangle {
+  padding: 2px 5px 2px 8px;
+  border-radius: 7px;
+  border: solid 1px #c1c1c1;
+  background-color: #ffffff;
+}
+
+.estacao {
+  width: 162px;
+  height: 32px;
+  margin: 0 10px 0 0;
+}
+
+.trem {
+  width: 132px;
+  height: 32px;
+  margin: 0 10px;
+}
+
+.locomotiva {
+  width: 208px;
+  height: 32px;
+  margin: 0 10px;
+}
+
+.os {
+  width: 109px;
+  height: 32px;
+  margin: 0 20px 0 10px;
+}
+
+.label {
+  /* width: 51px; */
+  height: 16px;
+  margin: 0 9px 0 0;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #a2a2a2;
+}
+
+.select {
+  /* width: 80px; */
+  height: 16px;
+  /* margin: 0 5px 0 9px; */
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #383838;
+  border: 0;
+}
+
+.button {
+  width: 80px;
+  height: 32px;
+  margin: 0 0 0 20px;
+  padding: 4px 13px;
+  border-radius: 4px;
+  background-color: #5792f1;
+  border: 0;
+}
+
+.button-span {
+  width: 54px;
+  height: 16px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #ffffff;
+}
+
+.Indicadores {
+  width: 205px;
+  height: 38px;
+  margin: 30px 15px 34px 105px;
+  font-family: Roboto;
+  font-size: 32px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #343434;
+}
+
+.card {
+  padding: 26px 91px 17px 45px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.14);
+  background-color: #ffffff;
+}
+
+.card-span {
+  width: 34px;
+  height: 71px;
+  margin: 0 160px 14px 0;
+  font-family: Roboto;
+  font-size: 60px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #303030;
+}
+
+.card-location {
+  width: 194px;
+  height: 22px;
+  /* margin: 14px 0 0; */
+  font-family: Roboto;
+  font-size: 24px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0.92;
+  letter-spacing: normal;
+  color: #717171;
+}
+
+.card-centro-oeste {
+  width: 330px;
+  height: 150px;
+  margin: 34px 52px 39px 105px;
+}
+
+.card-sp-norte {
+  width: 330px;
+  height: 150px;
+  margin: 34px 51px 39px 23px;
+}
+
+.card-sp-sul {
+  width: 330px;
+  height: 150px;
+  margin: 34px 143px 39px 51px;
+}
+
+.Detalhamento {
+  width: 123px;
+  height: 19px;
+  margin: 39px 2px 6px 106px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #343434;
+}
+
+.line {
+  width: 1091px;
+  height: 1px;
+  margin: 6px 144px 24px 106px;
+  background-color: #999999;
+}
+
+.Exibir {
+  width: 44px;
+  height: 22px;
+  margin: 24px 5px 21px 106px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.38;
+  letter-spacing: normal;
+  color: #303030;
+}
+
+.radio {
+  width: 10px;
+  height: 10px;
+  margin: 30px 6px 27px 5px;
+  padding: 2px;
+  border: solid 1px #979797;
+  background-color: #ffffff;
+}
+
+.radio-text {
+  transform: rotate(-360deg);
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #484848;
+}
+
+.radio-text-todos {
+  width: 32px;
+  height: 16px;
+  margin: 27px 12px 24px 6px;
+}
+
+.radio-text-co {
+  width: 90px;
+  height: 16px;
+  margin: 27px 14px 24px 2px;
+  font-weight: normal !important;
+}
+
+.radio-text-spn {
+  width: 56px;
+  height: 16px;
+  margin: 27px 10px 24px 6px;
+  font-weight: normal !important;
+}
+
+.radio-text-sps {
+  width: 41px;
+  height: 16px;
+  margin: 27px 23px 24px 6px;
+  font-weight: normal !important;
+}
