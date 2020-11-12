@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatTableDataSource} from '@angular/material/table';
 
 declare var ol: any;
 
@@ -8,6 +10,11 @@ declare var ol: any;
   styleUrls: ['./trip-optimizer.component.css']
 })
 export class TripOptimizerComponent implements OnInit {
+
+  displayedColumns: string[] = ['trem', 'local', 'tripAtivo', 'falha'];
+  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   latitude: number = -19.8157;
   longitude: number = -43.9542;
@@ -29,9 +36,33 @@ export class TripOptimizerComponent implements OnInit {
     });
   }
 
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+  }
+
   setCenter() {
     var view = this.map.getView();
     view.setCenter(ol.proj.fromLonLat([this.longitude, this.latitude]));
     view.setZoom(8);
   }
 }
+
+export interface PeriodicElement {
+  trem: string;
+  local: string;
+  tripAtivo: string;
+  falha: string;
+}
+
+const ELEMENT_DATA: PeriodicElement[] = [
+  {trem: 'X64', local: 'Santa Fé do Sul', tripAtivo: 'Sim', falha: 'Problema na comunicação CBL e Trip'},
+  {trem: 'X65', local: 'Santa Fé do Sul', tripAtivo: 'Sim', falha: 'Problema na comunicação CBL e Trip'},
+  {trem: 'X66', local: 'Santa Fé do Sul', tripAtivo: 'Sim', falha: 'Problema na comunicação CBL e Trip'},
+  {trem: 'X67', local: 'Santa Fé do Sul', tripAtivo: 'Sim', falha: 'Problema na comunicação CBL e Trip'},
+  {trem: 'X68', local: 'Santa Fé do Sul', tripAtivo: 'Sim', falha: 'Problema na comunicação CBL e Trip'},
+  {trem: 'X69', local: 'Santa Fé do Sul', tripAtivo: 'Sim', falha: 'Problema na comunicação CBL e Trip'},
+  {trem: 'X70', local: 'Santa Fé do Sul', tripAtivo: 'Sim', falha: 'Problema na comunicação CBL e Trip'},
+  {trem: 'X71', local: 'Santa Fé do Sul', tripAtivo: 'Sim', falha: 'Problema na comunicação CBL e Trip'},
+  {trem: 'X72', local: 'Santa Fé do Sul', tripAtivo: 'Sim', falha: 'Problema na comunicação CBL e Trip'},
+  {trem: 'X73', local: 'Santa Fé do Sul', tripAtivo: 'Sim', falha: 'Problema na comunicação CBL e Trip'}
+]

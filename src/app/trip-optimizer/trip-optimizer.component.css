@@ -20,7 +20,7 @@
 }
 
 .filter-rectangle {
-  padding: 2px 5px 2px 8px;
+  padding: 6px 9px 8px 6px;
   border-radius: 7px;
   border: solid 1px #c1c1c1;
   background-color: #ffffff;
@@ -138,7 +138,7 @@
 }
 
 .card-location {
-  width: 194px;
+  width: 200px;
   height: 22px;
   /* margin: 14px 0 0; */
   font-family: Roboto;
@@ -186,7 +186,7 @@
 .line {
   width: 1091px;
   height: 1px;
-  margin: 6px 144px 24px 106px;
+  margin: 6px 144px 4px 106px;
   background-color: #999999;
 }
 
@@ -250,4 +250,39 @@
   height: 16px;
   margin: 27px 23px 24px 6px;
   font-weight: normal !important;
+}
+
+table {
+  width: 1091px;
+  height: 40px;
+  margin: 21px 144px 0 106px;
+  padding: 8px 628px 10px 20px;
+  background-color: #f4f4f4;
+}
+
+.mat-elevation-z8 {
+  box-shadow: none;
+}
+
+th.mat-header-cell {
+  font-size: 14px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.57;
+  letter-spacing: normal;
+}
+
+td.mat-cell {
+  background-color: #fdfdfd;
+  font-size: 16px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.38;
+  letter-spacing: normal;
+}
+
+.mat-paginator {
+  margin: 21px 144px 0 106px !important;
 }

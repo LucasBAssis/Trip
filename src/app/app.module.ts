@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { TripOptimizerComponent } from './trip-optimizer/trip-optimizer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { TripOptimizerComponent } from './trip-optimizer/trip-optimizer.componen
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    TripOptimizerModule
+    TripOptimizerModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
