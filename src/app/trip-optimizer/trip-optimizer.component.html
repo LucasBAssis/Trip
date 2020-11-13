@@ -1,38 +1,39 @@
 <div>
   <div class="Filters">
-    <div class="filter-rectangle estacao">
-      <label for="estacao" class="label">Estação</label>
-      <select name="estacao" id="estacao" class="select">
-        <option>Todas</option>
-        <option>Estação 1</option>
-        <option>Estação 2</option>
+    <div class="filter-rectangle estacao" [class.card-blue]="estacaoSelecionada != null">
+      <label for="estacao" class="label" [class.card-blue]="estacaoSelecionada != null">Estação</label>
+      <select name="estacao" id="estacao" class="select" [(ngModel)]="estacaoSelecionada" [class.card-blue]="estacaoSelecionada != null">
+        <option [ngValue]="null">Todas</option>
+        <option [ngValue]="'estacao1'">Estação 1</option>
+        <option [ngValue]="'estacao2'">Estação 2</option>
       </select>
     </div>
-    <div class="filter-rectangle trem">
-      <label for="trem" class="label">Trem</label>
-      <select name="trem" id="trem" class="select">
-        <option>Todos</option>
-        <option>Trem 1</option>
-        <option>Trem 2</option>
+    <div class="filter-rectangle trem" [class.card-blue]="tremSelecionado != null">
+      <label for="trem" class="label" [class.card-blue]="tremSelecionado != null">Trem</label>
+      <select name="trem" id="trem" class="select" [(ngModel)]="tremSelecionado" [class.card-blue]="tremSelecionado != null">
+        <option [ngValue]="null">Todos</option>
+        <option [ngValue]="'trem1'">Trem 1</option>
+        <option [ngValue]="'trem2'">Trem 2</option>
       </select>
     </div>
-    <div class="filter-rectangle locomotiva">
-      <label for="locomotiva" class="label">Locomotiva</label>
-      <select name="locomotiva" id="locomotiva" class="select">
-        <option>Todas</option>
-        <option>Locomotiva 1</option>
-        <option>Locomotiva 2</option>
+    <div class="filter-rectangle locomotiva" [class.card-blue]="locomotivaSelecionada != null">
+      <label for="locomotiva" class="label" [class.card-blue]="locomotivaSelecionada != null">Locomotiva</label>
+      <select name="locomotiva" id="locomotiva" class="select" [(ngModel)]="locomotivaSelecionada" [class.card-blue]="locomotivaSelecionada != null">
+        <option [ngValue]="null">Todas</option>
+        <option [ngValue]="'locomotiva1'">Locomotiva 1</option>
+        <option [ngValue]="'locomotiva2'">Locomotiva 2</option>
       </select>
     </div>
-    <div class="filter-rectangle os">
-      <label for="os" class="label">OS</label>
-      <select name="os" id="os" class="select">
-        <option>Todas</option>
-        <option>OS 1</option>
-        <option>OS 2</option>
+    <div class="filter-rectangle os" [class.card-blue]="osSelecionada != null">
+      <label for="os" class="label" [class.card-blue]="osSelecionada != null">OS</label>
+      <select name="os" id="os" class="select" [(ngModel)]="osSelecionada" [class.card-blue]="osSelecionada != null">
+        <option [ngValue]="null">Todas</option>
+        <option [ngValue]="'os1'">OS 1</option>
+        <option [ngValue]="'os2'">OS 2</option>
       </select>
     </div>
-    <button type="button" class="button"><span class="button-span">Buscar</span></button>
+    <button *ngIf="!buscaRealizada" type="button" class="button" (click)="realizaBusca()"><span class="button-span">BUSCAR</span></button>
+    <button *ngIf="buscaRealizada" type="button" class="clean-button" (click)="limpaBusca()"><span class="button-span">LIMPAR BUSCA</span></button>
   </div>
 
   <div>
@@ -61,7 +62,7 @@
 
   <div class="display-line">
     <span class="Exibir">Exibir:</span>
-    <input type="radio" id="todos" name="localizacao" value="todos" class="radio" checked>
+    <input type="radio" id="todos" name="localizacao" value="todos" class="radio">
     <label for="todos" class="radio-text radio-text-todos">Todos</label>
     <input type="radio" id="centroOeste" name="localizacao" value="centroOeste" class="radio">
     <label for="centroOeste" class="radio-text radio-text-co">Centro Oeste</label>
@@ -97,7 +98,14 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    <div *ngIf="dataSource.data.length == 0">
+      <div class="no-result-table">
+        <span class="no-result-text" *ngIf="buscaRealizada">Nenhum resultado encontrado.</span>
+        <span class="no-result-text" *ngIf="!buscaRealizada">Selecione um local para exibir.</span>
+      </div>
+    </div>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons *ngIf="dataSource.data.length != 0"></mat-paginator>
   </div>
 
   <!-- <div>

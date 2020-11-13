@@ -21,6 +21,14 @@ export class TripOptimizerComponent implements OnInit {
 
   map: any;
 
+  buscaRealizada: boolean = false;
+
+  // Filtros
+  estacaoSelecionada: string = null;
+  tremSelecionado: string = null;
+  locomotivaSelecionada: string = null;
+  osSelecionada: string = null;
+
   ngOnInit() {
     this.map = new ol.Map({
       target: 'map',
@@ -44,6 +52,25 @@ export class TripOptimizerComponent implements OnInit {
     var view = this.map.getView();
     view.setCenter(ol.proj.fromLonLat([this.longitude, this.latitude]));
     view.setZoom(8);
+  }
+
+  realizaBusca() {
+    this.buscaRealizada = true;
+    console.log(this.estacaoSelecionada);
+    console.log(this.tremSelecionado);
+    console.log(this.locomotivaSelecionada);
+    console.log(this.osSelecionada);
+
+    // this.dataSource.data = ELEMENT_DATA;
+    // this.dataSource.paginator = this.paginator;
+  }
+
+  limpaBusca() {
+    this.buscaRealizada = false;
+    this.estacaoSelecionada = null;
+    this.tremSelecionado = null;
+    this.locomotivaSelecionada = null;
+    this.osSelecionada = null;
   }
 }
 

@@ -1,12 +1,12 @@
 .Rectangle {
     width: 100%;
     height: 60px;
-    padding: 16px 963px 16px 106px;
+    padding: 16px 663px 16px 106px;
     background-color: #025fc1;
 }
 
 .Painel-TRIP---On-O {
-    width: 230px;
+    width: 280px;
     height: 28px;
     margin: 0 0 0 17px;
     font-family: Roboto;

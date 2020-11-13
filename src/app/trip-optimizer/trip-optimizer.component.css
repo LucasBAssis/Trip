@@ -79,6 +79,11 @@
   border: 0;
 }
 
+.card-blue {
+  background-color: #008eff !important;
+  color: #ffffff !important;
+}
+
 .button {
   width: 80px;
   height: 32px;
@@ -86,6 +91,16 @@
   padding: 4px 13px;
   border-radius: 4px;
   background-color: #5792f1;
+  border: 0;
+}
+
+.clean-button {
+  width: 134px;
+  height: 32px;
+  margin: 0 0 0 20px;
+  padding: 8px 18px 8px 17px;
+  border-radius: 4px;
+  background-color: #eeb952;
   border: 0;
 }
 
@@ -285,4 +300,26 @@ td.mat-cell {
 
 .mat-paginator {
   margin: 21px 144px 0 106px !important;
+}
+
+.no-result-table {
+  width: 1091px;
+  height: 101px;
+  margin: 2px 144px 38px 106px;
+  padding: 40px 434px 39px;
+  background-color: #f8f8f8;
+}
+
+.no-result-text {
+  width: 223px;
+  height: 22px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: bold;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.38;
+  letter-spacing: normal;
+  text-align: center;
+  color: #343434;
 }
