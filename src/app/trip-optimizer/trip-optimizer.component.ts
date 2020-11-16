@@ -19,8 +19,9 @@ export class TripOptimizerComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   length = 100;
-  pageSize = 5;
   pageIndex = 0;
+  pageSize = 5;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
 
   latitude: number = -19.8157;
   longitude: number = -43.9542;
@@ -41,6 +42,11 @@ export class TripOptimizerComponent implements OnInit {
   areaSelecionada: string = null;
 
   ngOnInit() {
+    this.loadMap();
+    this.loadData();
+  }
+
+  loadMap(): void{
     this.map = new ol.Map({
       target: 'map',
       layers: [
@@ -77,13 +83,19 @@ export class TripOptimizerComponent implements OnInit {
     this.pageIndex = pageEvent.pageIndex;
     this.pageSize = pageEvent.pageSize;
 
-    this.loadData();
+    this.findTrips();
   }
 
   findTrips() {
-    this.tripService.findAll().subscribe(trips => {
+    this.tripService.findAll(this.pageIndex, this.pageSize).subscribe(trips => {
       this.dataSource = trips.body;
       this.buscaRealizada = true;
+    })
+  }
+
+  getTripTotalLength() {
+    this.tripService.getLength().subscribe(total => {
+      this.length = total.body.total;
     })
   }
 
@@ -94,6 +106,7 @@ export class TripOptimizerComponent implements OnInit {
 
   loadData() {
     this.findTrips();
+    this.getTripTotalLength();
     this.length = this.dataSource.length;
   }
 }

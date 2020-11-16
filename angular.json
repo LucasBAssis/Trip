@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "TripOptimizer"
+  "defaultProject": "TripOptimizer",
+  "cli": {
+    "analytics": false
+  }
 }
