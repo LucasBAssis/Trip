@@ -1,5 +1,7 @@
+import { ITrip } from './../model/trip.model';
+import { TripService } from './trip-optimizer.service';
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
+import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 
 declare var ol: any;
@@ -12,9 +14,13 @@ declare var ol: any;
 export class TripOptimizerComponent implements OnInit {
 
   displayedColumns: string[] = ['trem', 'local', 'tripAtivo', 'falha'];
-  dataSource = new MatTableDataSource<PeriodicElement>(ELEMENT_DATA);
+  dataSource: ITrip[] = [];
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+
+  length = 100;
+  pageSize = 5;
+  pageIndex = 0;
 
   latitude: number = -19.8157;
   longitude: number = -43.9542;
@@ -23,11 +29,16 @@ export class TripOptimizerComponent implements OnInit {
 
   buscaRealizada: boolean = false;
 
+  error = false;
+
+  constructor(private tripService: TripService) {}
+
   // Filtros
   estacaoSelecionada: string = null;
   tremSelecionado: string = null;
   locomotivaSelecionada: string = null;
   osSelecionada: string = null;
+  areaSelecionada: string = null;
 
   ngOnInit() {
     this.map = new ol.Map({
@@ -45,7 +56,7 @@ export class TripOptimizerComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator;
+    // this.dataSource.paginator = this.paginator;
   }
 
   setCenter() {
@@ -54,42 +65,35 @@ export class TripOptimizerComponent implements OnInit {
     view.setZoom(8);
   }
 
-  realizaBusca() {
-    this.buscaRealizada = true;
-    console.log(this.estacaoSelecionada);
-    console.log(this.tremSelecionado);
-    console.log(this.locomotivaSelecionada);
-    console.log(this.osSelecionada);
-
-    // this.dataSource.data = ELEMENT_DATA;
-    // this.dataSource.paginator = this.paginator;
-  }
-
-  limpaBusca() {
+  clean() {
     this.buscaRealizada = false;
     this.estacaoSelecionada = null;
     this.tremSelecionado = null;
     this.locomotivaSelecionada = null;
     this.osSelecionada = null;
   }
-}
 
-export interface PeriodicElement {
-  trem: string;
-  local: string;
-  tripAtivo: string;
-  falha: string;
-}
+  onPageChange(pageEvent: PageEvent) {
+    this.pageIndex = pageEvent.pageIndex;
+    this.pageSize = pageEvent.pageSize;
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {trem: 'X64', local: 'Santa Fé do Sul', tripAtivo: 'Sim', falha: 'Problema na comunicação CBL e Trip'},
-  {trem: 'X65', local: 'Santa Fé do Sul', tripAtivo: 'Sim', falha: 'Problema na comunicação CBL e Trip'},
-  {trem: 'X66', local: 'Santa Fé do Sul', tripAtivo: 'Sim', falha: 'Problema na comunicação CBL e Trip'},
-  {trem: 'X67', local: 'Santa Fé do Sul', tripAtivo: 'Sim', falha: 'Problema na comunicação CBL e Trip'},
-  {trem: 'X68', local: 'Santa Fé do Sul', tripAtivo: 'Sim', falha: 'Problema na comunicação CBL e Trip'},
-  {trem: 'X69', local: 'Santa Fé do Sul', tripAtivo: 'Sim', falha: 'Problema na comunicação CBL e Trip'},
-  {trem: 'X70', local: 'Santa Fé do Sul', tripAtivo: 'Sim', falha: 'Problema na comunicação CBL e Trip'},
-  {trem: 'X71', local: 'Santa Fé do Sul', tripAtivo: 'Sim', falha: 'Problema na comunicação CBL e Trip'},
-  {trem: 'X72', local: 'Santa Fé do Sul', tripAtivo: 'Sim', falha: 'Problema na comunicação CBL e Trip'},
-  {trem: 'X73', local: 'Santa Fé do Sul', tripAtivo: 'Sim', falha: 'Problema na comunicação CBL e Trip'}
-]
+    this.loadData();
+  }
+
+  findTrips() {
+    this.tripService.findAll().subscribe(trips => {
+      this.dataSource = trips.body;
+      this.buscaRealizada = true;
+    })
+  }
+
+  changeArea() {
+    this.findTrips();
+    this.length = this.dataSource.length;
+  }
+
+  loadData() {
+    this.findTrips();
+    this.length = this.dataSource.length;
+  }
+}

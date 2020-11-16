@@ -2,7 +2,8 @@
   <div class="Filters">
     <div class="filter-rectangle estacao" [class.card-blue]="estacaoSelecionada != null">
       <label for="estacao" class="label" [class.card-blue]="estacaoSelecionada != null">Estação</label>
-      <select name="estacao" id="estacao" class="select" [(ngModel)]="estacaoSelecionada" [class.card-blue]="estacaoSelecionada != null">
+      <select name="estacao" id="estacao" class="select" [(ngModel)]="estacaoSelecionada"
+        [class.card-blue]="estacaoSelecionada != null">
         <option [ngValue]="null">Todas</option>
         <option [ngValue]="'estacao1'">Estação 1</option>
         <option [ngValue]="'estacao2'">Estação 2</option>
@@ -10,7 +11,8 @@
     </div>
     <div class="filter-rectangle trem" [class.card-blue]="tremSelecionado != null">
       <label for="trem" class="label" [class.card-blue]="tremSelecionado != null">Trem</label>
-      <select name="trem" id="trem" class="select" [(ngModel)]="tremSelecionado" [class.card-blue]="tremSelecionado != null">
+      <select name="trem" id="trem" class="select" [(ngModel)]="tremSelecionado"
+        [class.card-blue]="tremSelecionado != null">
         <option [ngValue]="null">Todos</option>
         <option [ngValue]="'trem1'">Trem 1</option>
         <option [ngValue]="'trem2'">Trem 2</option>
@@ -18,7 +20,8 @@
     </div>
     <div class="filter-rectangle locomotiva" [class.card-blue]="locomotivaSelecionada != null">
       <label for="locomotiva" class="label" [class.card-blue]="locomotivaSelecionada != null">Locomotiva</label>
-      <select name="locomotiva" id="locomotiva" class="select" [(ngModel)]="locomotivaSelecionada" [class.card-blue]="locomotivaSelecionada != null">
+      <select name="locomotiva" id="locomotiva" class="select" [(ngModel)]="locomotivaSelecionada"
+        [class.card-blue]="locomotivaSelecionada != null">
         <option [ngValue]="null">Todas</option>
         <option [ngValue]="'locomotiva1'">Locomotiva 1</option>
         <option [ngValue]="'locomotiva2'">Locomotiva 2</option>
@@ -32,26 +35,38 @@
         <option [ngValue]="'os2'">OS 2</option>
       </select>
     </div>
-    <button *ngIf="!buscaRealizada" type="button" class="button" (click)="realizaBusca()"><span class="button-span">BUSCAR</span></button>
-    <button *ngIf="buscaRealizada" type="button" class="clean-button" (click)="limpaBusca()"><span class="button-span">LIMPAR BUSCA</span></button>
+    <button *ngIf="!buscaRealizada" type="button" class="button" (click)="loadData()"><span
+        class="button-span">BUSCAR</span></button>
+    <button *ngIf="buscaRealizada" type="button" class="clean-button" (click)="clean()"><span
+        class="button-span">LIMPAR BUSCA</span></button>
   </div>
 
-  <div>
-    <span class="Indicadores">INDICADORES</span>
+  <div *ngIf="error">
+    <div class="warning-box">
+      <!-- svg -->
+      <img [src]="'assets/img/icone-alerta.svg'" class="iconealerta">
+      <span class="warning-text">Atenção: o sistema está com erro de comunicação.</span>
+    </div>
   </div>
 
-  <div class="display-line">
-    <div class="card card-centro-oeste">
-      <span class="card-span">8</span>
-      <span class="card-location">Centro Oeste (CO)</span>
+  <div *ngIf="!(buscaRealizada && dataSource.length == 0)">
+    <div>
+      <span class="Indicadores">INDICADORES</span>
     </div>
-    <div class="card card-sp-norte">
-      <span class="card-span">2</span>
-      <span class="card-location">SP Norte</span>
-    </div>
-    <div class="card card-sp-sul">
-      <span class="card-span">4</span>
-      <span class="card-location">SP Sul</span>
+
+    <div class="display-line">
+      <div class="card card-centro-oeste">
+        <span class="card-span">8</span>
+        <span class="card-location">Centro Oeste (CO)</span>
+      </div>
+      <div class="card card-sp-norte">
+        <span class="card-span">2</span>
+        <span class="card-location">SP Norte</span>
+      </div>
+      <div class="card card-sp-sul">
+        <span class="card-span">4</span>
+        <span class="card-location">SP Sul</span>
+      </div>
     </div>
   </div>
 
@@ -60,18 +75,22 @@
     <div class="line"></div>
   </div>
 
-  <div class="display-line">
+  <div class="display-line" *ngIf="!(buscaRealizada && dataSource.length == 0)">
     <span class="Exibir">Exibir:</span>
-    <input type="radio" id="todos" name="localizacao" value="todos" class="radio">
+    <input type="radio" id="todos" name="localizacao" value="todos" class="radio" [(ngModel)]="areaSelecionada"
+      (change)="changeArea()">
     <label for="todos" class="radio-text radio-text-todos">Todos</label>
-    <input type="radio" id="centroOeste" name="localizacao" value="centroOeste" class="radio">
+    <input type="radio" id="centroOeste" name="localizacao" value="centroOeste" class="radio"
+      [(ngModel)]="areaSelecionada" (change)="changeArea()">
     <label for="centroOeste" class="radio-text radio-text-co">Centro Oeste</label>
-    <input type="radio" id="spNorte" name="localizacao" value="spNorte" class="radio">
+    <input type="radio" id="spNorte" name="localizacao" value="spNorte" class="radio" [(ngModel)]="areaSelecionada"
+      (change)="changeArea()">
     <label for="spNorte" class="radio-text radio-text-spn">SP Norte</label>
-    <input type="radio" id="spSul" name="localizacao" value="spSul" class="radio">
+    <input type="radio" id="spSul" name="localizacao" value="spSul" class="radio" [(ngModel)]="areaSelecionada"
+      (change)="changeArea()">
     <label for="spSul" class="radio-text radio-text-sps">SP Sul</label>
   </div>
-  
+
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">
       <ng-container matColumnDef="trem">
@@ -98,14 +117,18 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
 
-    <div *ngIf="dataSource.data.length == 0">
+    <div *ngIf="dataSource.length == 0">
       <div class="no-result-table">
-        <span class="no-result-text" *ngIf="buscaRealizada">Nenhum resultado encontrado.</span>
-        <span class="no-result-text" *ngIf="!buscaRealizada">Selecione um local para exibir.</span>
+        <span class="no-result-text" *ngIf="buscaRealizada || (areaSelecionada && dataSource.length == 0)">Nenhum
+          resultado encontrado.</span>
+        <span class="no-result-text" *ngIf="!buscaRealizada && areaSelecionada == null">Selecione um local para
+          exibir.</span>
       </div>
     </div>
 
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons *ngIf="dataSource.data.length != 0"></mat-paginator>
+    <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="[5, 10, 20]" (page)="onPageChange($event)"
+      showFirstLastButtons *ngIf="dataSource.length != 0">
+    </mat-paginator>
   </div>
 
   <!-- <div>
@@ -120,6 +143,6 @@
   <button (click)="setCenter()">Go</button>-->
 </div>
 <br>
-<div class="col-6">
+<div class="col-6" [hidden]="(buscaRealizada || areaSelecionada) && dataSource.length == 0">
   <div id="map" class="map Map-Rectangle"></div>
 </div>

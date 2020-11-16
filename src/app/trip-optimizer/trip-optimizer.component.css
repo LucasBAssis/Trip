@@ -5,7 +5,7 @@
 .Map-Rectangle {
   width: 1089px;
   height: 508px;
-  margin: 35px 147px 42px 105px;
+  margin: 35px 147px 42px 93px;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 2px 1px -1px rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.14);
 }
 
@@ -321,5 +321,37 @@ td.mat-cell {
   line-height: 1.38;
   letter-spacing: normal;
   text-align: center;
+  color: #343434;
+}
+
+.warning-box {
+  width: 448px;
+  height: 64px;
+  margin: 44px 326px 42px 104px;
+  padding: 17px 15px;
+  border-radius: 3px;
+  box-shadow: 0 1px 8px 0 rgba(255, 204, 0, 0.5);
+  border: solid 2px #feb121;
+  background-color: #ffffff;
+}
+
+.iconealerta {
+  width: 30px;
+  height: 30px;
+  margin: 0 11px 5px 0;
+  object-fit: contain;
+}
+
+.warning-text {
+  width: 367px;
+  height: 19px;
+  margin: 6px 0 5px 0;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
   color: #343434;
 }
