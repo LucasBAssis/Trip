@@ -19,8 +19,8 @@ export class TripOptimizerComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   length = 100;
-  pageIndex = 0;
   pageSize = 5;
+  pageIndex = 1;
   pageSizeOptions: number[] = [5, 10, 25, 100];
 
   latitude: number = -19.8157;
@@ -80,10 +80,10 @@ export class TripOptimizerComponent implements OnInit {
   }
 
   onPageChange(pageEvent: PageEvent) {
-    this.pageIndex = pageEvent.pageIndex;
+    this.pageIndex = pageEvent.pageIndex + 1;
     this.pageSize = pageEvent.pageSize;
 
-    this.findTrips();
+    this.loadData();
   }
 
   findTrips() {
@@ -107,6 +107,5 @@ export class TripOptimizerComponent implements OnInit {
   loadData() {
     this.findTrips();
     this.getTripTotalLength();
-    this.length = this.dataSource.length;
   }
 }
